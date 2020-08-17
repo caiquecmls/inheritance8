@@ -21,7 +21,7 @@ public class Program {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        List<Pessoa> list = new ArrayList<>();
+        List<Pessoa> list = new ArrayList<Pessoa>();
 
         System.out.print("Enter the number of tax payers: ");
         int n = sc.nextInt();
@@ -31,8 +31,7 @@ public class Program {
             System.out.print("Individual or company (i/c)? ");
             char opcoes = sc.next().charAt(0);
             System.out.print("Name: ");
-            sc.nextLine();
-            String nome = sc.nextLine();
+            String nome = sc.next();
             System.out.print("Anual income: ");
             double rendaAnual = sc.nextDouble();
             if (opcoes == 'i') {
@@ -50,9 +49,13 @@ public class Program {
         double soma = 0.0;
         for (Pessoa elemento : list) {
             System.out.println(elemento.getNome() + ": $" + String.format("%.2f", elemento.calculoImposto()));
+        }
+
+        for (Pessoa elemento : list) {
             soma += elemento.calculoImposto();
-            System.out.printf("TOTAL TAXES: $ %.2f", soma);
 
         }
+        System.out.println("");
+        System.out.printf("TOTAL TAXES: $ %.2f", soma);
     }
 }
